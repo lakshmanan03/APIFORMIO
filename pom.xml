@@ -1,0 +1,44 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.jda.mobility.framework</groupId>
+  <artifactId>bffApplicationParent</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  <name>bffApplicationParent</name>
+  <description>Parent project for bffApplication</description>
+
+	<properties>
+		<jacoco.reportPath>${project.basedir}/target/coverage-reports/jacoco-unit.exec</jacoco.reportPath>
+		<jacoco.plugin.version>0.8.4</jacoco.plugin.version>
+	</properties>
+	
+  	<modules>
+		<module>bffWebManagement</module>
+		<module>bffApiManagement</module>
+		<module>bffCore</module>
+		<module>bffDataManagement</module>
+		<module>bffProductManagement</module>
+	</modules>
+	
+	<build>
+		<plugins>
+			<plugin>
+			    <groupId>org.jacoco</groupId>
+			    <artifactId>jacoco-maven-plugin</artifactId>
+			    <version>${jacoco.plugin.version}</version>
+			    <executions>
+			        <execution>
+			            <id>agent-for-ut</id>
+			            <goals>
+			                <goal>prepare-agent</goal>
+			            </goals>
+			            <configuration>
+			                <append>true</append>
+			                <destFile>${jacoco.reportPath}</destFile>
+			            </configuration>
+			        </execution>
+			    </executions>
+			</plugin>	
+		</plugins>
+	</build>
+</project>
